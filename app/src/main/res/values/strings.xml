@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PersonInfo</string>
+    <string name="person_name">Jamebes Tung</string>
+    <string name="person_role">Android Developer Extraordinaire</string>
+    <string name="phone">+11(123)444 555 666</string>
+    <string name="person_mail">Jamebes@AndroidDev</string>
+</resources>
