@@ -1,5 +1,6 @@
 package jamebes.tung.personinfo
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.webkit.WebSettings.TextSize
 import androidx.activity.ComponentActivity
@@ -32,7 +33,6 @@ class MainActivity : ComponentActivity() {
             PersonInfoTheme {
                 // A surface container using the 'background' color from the theme
                 Surface {
-//                   ShowInfo()
                     BusinessCard()
                 }
             }
@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun BusinessCard(){
+fun BusinessCard() {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
@@ -50,126 +50,93 @@ fun BusinessCard(){
             .fillMaxHeight()
             .fillMaxWidth()
     ) {
-        Image(painter = painterResource(id = R.drawable.android_logo),
+        Image(
+            painter = painterResource(id = R.drawable.android_logo),
             contentDescription = null,
             modifier = Modifier
-            .height(120.dp)
-            .width(120.dp)
-            )
+                .height(120.dp)
+                .width(120.dp)
+        )
 
-        Text(text = stringResource(id = R.string.person_name),
+        Text(
+            text = stringResource(id = R.string.person_name),
             fontSize = 46.sp,
             color = Color.White,
             fontWeight = FontWeight.Thin,
-            )
+        )
 
-        Text(text = stringResource(id = R.string.person_role),
+        Text(
+            text = stringResource(id = R.string.person_role),
             fontSize = 18.sp,
             color = Color(0xFF3EDC85),
             fontWeight = FontWeight.Bold
-            )
+        )
 
     }
 
+    HorizontalLine(topPadding = 595)
+
+    PersonInfo(
+        topPadding = 600,
+        iconDrawable = R.drawable.baseline_phone_24,
+        textString = R.string.phone
+    )
+
+    HorizontalLine(topPadding = 625)
+
+    PersonInfo(
+        topPadding = 627,
+        iconDrawable = R.drawable.baseline_share_24,
+        textString = R.string.person_mail
+    )
+
+
+    HorizontalLine(topPadding = 652)
+
+    PersonInfo(
+        topPadding = 657,
+        iconDrawable = R.drawable.baseline_email_24,
+        textString = R.string.person_mail
+    )
+
+    HorizontalLine(topPadding = 682)
+
+}
+
+@Composable
+fun HorizontalLine(topPadding: Int) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-        modifier = Modifier.padding(top = 595.dp)
+        modifier = Modifier.padding(top = topPadding.dp)
 
     ) {
         Divider(color = Color.White, thickness = 1.dp)
     }
+}
 
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-        ) {
-            Row(
-                modifier = Modifier
-                    .padding(top = 600.dp)
-            ) {
-
-                Icon(
-                    painter = painterResource(id = R.drawable.baseline_phone_24),
-                    contentDescription = null,
-                    modifier = Modifier.padding(start = 50.dp),
-                    Color(0xFF3EDC85)
-                )
-                Text(
-                    text = stringResource(id = R.string.phone),
-                    color = Color.White,
-                    modifier = Modifier.padding(start = 16.dp),
-                    fontSize = 14.sp
-                )
-            }
-        }
+@Composable
+fun PersonInfo(topPadding: Int, iconDrawable: Int, textString: Int) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-        modifier = Modifier.padding(top = 625.dp)
-
-    ) {
-        Divider(color = Color.White, thickness = 1.dp)
-    }
-
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        modifier = Modifier.padding(top = 627.dp)
-
+        modifier = Modifier.padding(top = topPadding.dp)
     ) {
         Row {
-            Icon(painter = painterResource(id = R.drawable.baseline_share_24), contentDescription = null,
+            Icon(
+                painter = painterResource(id = iconDrawable),
+                contentDescription = null,
                 modifier = Modifier.padding(start = 50.dp),
                 Color(0xFF3EDC85)
-                )
-            Text(text = stringResource(id = R.string.person_mail),
+            )
+            Text(
+                text = stringResource(id = textString),
                 color = Color.White,
                 modifier = Modifier.padding(start = 16.dp),
                 fontSize = 14.sp
             )
         }
-
     }
-
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        modifier = Modifier.padding(top = 652.dp)
-
-    ) {
-        Divider(color = Color.White, thickness = 1.dp)
-    }
-
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        modifier = Modifier.padding(top = 657.dp)
-
-    ) {
-        Row {
-            Icon(painter = painterResource(id = R.drawable.baseline_email_24), contentDescription = null,
-                modifier = Modifier.padding(start = 50.dp),
-                Color(0xFF3EDC85)
-            )
-            Text(text = stringResource(R.string.person_mail),
-                color = Color.White,
-                modifier = Modifier.padding(start = 16.dp),
-                fontSize = 14.sp
-            )
-        }
-
-    }
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        modifier = Modifier.padding(top = 682.dp)
-
-    ) {
-        Divider(color = Color.White, thickness = 1.dp)
-    }
-
-
 }
 
 
